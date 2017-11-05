@@ -1,4 +1,5 @@
 package com.cfhero.api.user;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +15,10 @@ public class User {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
-    
+
     public User() {
     }
-    
+
 	public User(Long id, String name) {
 		this.id = id;
 		this.name = name;
