@@ -22,15 +22,21 @@ public class LungKpi {
     private Long id;
     // idenitfication props --------------
     private Long userId;
-
-    // private LocalDate createdDate;
-
     // bbeacuse of Java 8 and Hibernate 5 not compatibility, for now we have to have it doubled, check setters
     private LocalDateTime effectiveTimeDateTime;
     private Timestamp effectiveTimestamp;
+    private Timestamp createdTimestamp;
 
     // lung functions --------------------
     private Double fce;
+
+    public Timestamp getCreatedTimestamp() {
+        return createdTimestamp;
+    }
+
+    public void setCreatedTimestamp(Timestamp createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
+    }
 
     public LocalDateTime getEffectiveTimeDateTime() {
         return effectiveTimeDateTime;

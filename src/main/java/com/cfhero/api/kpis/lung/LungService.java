@@ -29,14 +29,14 @@ public class LungService {
 	}
 
     public List<LungKpi> getLungKpi(Long userid, Integer year, Integer month) {
-        // default values
+        // default values this month ---------------------------------------------------
         if (year == null) {
             year = Calendar.getInstance().get(Calendar.YEAR);
         }
         if (month == null) {
             month = Calendar.getInstance().get(Calendar.MONTH);
         }
-        // create the first date of month
+        // create the first date of month-------------------------------------------------
         Calendar mycal = new GregorianCalendar(year, month, 1);
         long startDate = mycal.getTimeInMillis();
 
@@ -46,7 +46,7 @@ public class LungService {
         long endDate = mycal.getTimeInMillis();
 
         List<LungKpi> kpis = repository.findByEffectiveTimestampBetween(new Timestamp(startDate), new Timestamp(endDate));
-        // add human readable DateTime
+        // add human readable DateTime with Java 8
         kpis.forEach(kpi -> kpi.setEffectiveTimeDateTime(LocalDateTimeAttributeConverter.convertToLocalDateTime(kpi.getEffectiveTimestamp())));
 
         return kpis;
